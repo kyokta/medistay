@@ -19,6 +19,6 @@ class RsRoom extends Model
 
     public function hospital()
     {
-        return $this->belongsTo(Hospital::class, 'hospital_id', 'id');
+        return $this->belongsTo(Hospital::class, 'hospital_id');
     }
 }

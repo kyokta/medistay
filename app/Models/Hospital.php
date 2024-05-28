@@ -19,7 +19,9 @@ class Hospital extends Model
 
     public function rooms()
     {
-        return $this->hasMany(RsRoom::class, 'id', 'hospital_id');
+        return $this->hasMany(RsRoom::class, 'hospital_id', 'id');
+    }
+    public function hospital($id) {
     }
 
 }

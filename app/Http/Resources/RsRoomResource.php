@@ -13,7 +13,7 @@ class RsRoomResource extends JsonResource
      *
      * @return array<int|string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->id,
@@ -22,7 +22,16 @@ class RsRoomResource extends JsonResource
             'jumlah_kamar_terisi' => $this->jumlah_kamar_terisi,
             'jumlah_kamar_kosong' => $this->jumlah_kamar_kosong,
             'usia' => $this->usia,
-            'hospital' => new HospitalResource($this->whenLoaded('hospital')),
+            'hospital' => $this->whenLoaded(
+                'hospital',
+                function () {
+                    return [
+                        'id' => $this->hospital->id,
+                        'name' => $this->hospital->name, // Assuming 'name' is a field in the Hospital model
+                        // Add other fields as needed
+                    ];
+                }
+            ),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

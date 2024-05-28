@@ -6,6 +6,7 @@ use App\Models\RsRoom;
 use App\Http\Requests\StoreRsRoomRequest;
 use App\Http\Requests\UpdateRsRoomRequest;
 use App\Http\Resources\RsRoomResource;
+use Illuminate\Http\Request;
 
 class RsRoomController extends Controller
 {
@@ -16,7 +17,8 @@ class RsRoomController extends Controller
     {
         //
         // dd(RsRoom::all());
-        return RsRoomResource::collection(RsRoom::all());
+        // return RsRoomResource::collection(RsRoom::all());
+        return RsRoom::with('hospital')->get();
     }
 
     /**
@@ -25,6 +27,7 @@ class RsRoomController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -38,9 +41,13 @@ class RsRoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RsRoom $rsRoom)
+    public function show($id)
     {
         //
+        $rsRooms = RsRoom::where('hospital_id', $id)->get();
+
+        // Transform the RsRoom model(s) into a JSON response using RsRoomResource
+        return RsRoomResource::collection($rsRooms);
     }
 
     /**

@@ -14,12 +14,14 @@ return new class extends Migration
     {
         Schema::create('rs_rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Hospital::class);
+            $table->foreignId('hospital_id');
             $table->enum('kelas_kamar', ['kelas 1', 'kelas 2', 'kelas 3', 'VIP', 'VVIP']);
             $table->integer('jumlah_kamar_terisi');
             $table->integer('jumlah_kamar_kosong');
             $table->enum('usia', ['anak-anak', 'dewasa']);
             $table->timestamps();
+
+            $table->foreign('hospital_id')->references('id')->on('hospitals');
         });
     }
 
