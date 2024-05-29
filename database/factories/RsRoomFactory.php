@@ -22,11 +22,26 @@ class RsRoomFactory extends Factory
         $jumlah_kamar_terisi = fake()->numberBetween(0, $hospital->jumlah_kamar);
         $jumlah_kamar_kosong = $hospital->jumlah_kamar - $jumlah_kamar_terisi;
 
+        $specializations = [
+            'Cardiology',
+            'Neurology',
+            'Pediatrics',
+            'Orthopedics',
+            'Dermatology',
+            'Oncology',
+            'Gynecology',
+            'Urology',
+            'Gastroenterology',
+            'Psychiatry',
+            'Pulmonology'
+        ];
+
         return [
             'hospital_id' => $hospital->id,
             'kelas_kamar' => fake()->randomElement(['kelas 1', 'kelas 2', 'kelas 3', 'VIP', 'VVIP']),
             'jumlah_kamar_terisi' => $jumlah_kamar_terisi,
             'jumlah_kamar_kosong' => $jumlah_kamar_kosong,
+            'spesialisasi' => fake()->randomElement($specializations),
             'usia' => fake()->randomElement(['anak-anak', 'dewasa']),
         ];
     }

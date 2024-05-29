@@ -21,7 +21,8 @@ class Hospital extends Model
     {
         return $this->hasMany(RsRoom::class, 'hospital_id', 'id');
     }
-    public function hospital($id) {
+    public function AdminHospital()
+    {
+        return $this->hasMany(AdminHospital::class,'hospital_id','id')   ;
     }
-
 }

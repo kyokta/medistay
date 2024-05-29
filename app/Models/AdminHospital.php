@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class RsRoom extends Model
+class AdminHospital extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'hospital_id',
-        'kelas_kamar',
-        'jumlah_kamar_terisi',
-        'jumlah_kamar_kosong',
-        'usia',
-        'spesialisasi',
+        'username',
+        'alamat_email',
+        'password',
     ];
 
     public function hospital()

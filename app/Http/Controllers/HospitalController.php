@@ -14,6 +14,9 @@ class HospitalController extends Controller
     public function index()
     {
         //
+        $hospital = Hospital::all();
+
+        return response()->json($hospital);
     }
 
     /**
