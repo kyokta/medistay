@@ -142,16 +142,17 @@
                     <div class="group-div">
                         <div class="rectangle-div"></div>
                         <div class="pilih-rumah-sakit-wrapper">
-                            <input class="input-rumah-sakit" placeholder="Pilih Rumah Sakit" type="text" />
-
+                            <select class="input-rumah-sakit" placeholder="Pilih Rumah Sakit">
+                                <option value="">Pilih Rumah Sakit</option>
+                            </select>
                         </div>
+
                     </div>
-                    <button class="group-button">
+                    <button id="cekButton" class="group-button">
                         <div class="frame-child1"></div>
                         <b class="cek">Cek</b>
                     </button>
                 </div>
-            </div>
         </section>
         <section class="informasi-ketersediaan-kamar-wrapper">
             <h2 class="informasi-ketersediaan-kamar">
@@ -232,7 +233,7 @@
                                                 <select class="dropdown-select">
                                                     <option value="dewasa">Dewasa</option>
                                                     <option value="anak-anak">Anak-anak</option>
-                                                </select>   
+                                                </select>
                                             </div>
                                         </div>
                                         <button class="ggsearch-parent">
@@ -357,6 +358,43 @@
             </div>
         </footer>
     </div>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        // Membuat permintaan AJAX untuk mendapatkan data rumah sakit
+        $.ajax({
+            url: 'http://localhost:8000/hospitals', // Ganti dengan URL endpoint yang sesuai
+            method: 'GET',
+            success: function(response) {
+                // Jika permintaan berhasil, tambahkan data rumah sakit ke dropdown
+                var hospitals = response; // Anggap respons berisi array objek rumah sakit
+                var dropdown = $('.input-rumah-sakit');
+
+                // Kosongkan dropdown sebelum mengisi opsi baru
+                dropdown.empty();
+
+                // Tambahkan opsi "Pilih Rumah Sakit" pertama
+                dropdown.append('<option value="">Pilih Rumah Sakit</option>');
+
+                // Loop melalui data rumah sakit dan tambahkan opsi ke dropdown
+                hospitals.forEach(function(hospital) {
+                    dropdown.append('<option value="' + hospital.id + '">' + hospital
+                        .nama_rumah_sakit + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika permintaan gagal
+                console.error('Error:', error);
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>
+
 </body>
 
 </html>
