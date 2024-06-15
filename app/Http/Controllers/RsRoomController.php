@@ -16,7 +16,7 @@ class RsRoomController extends Controller
      */
     public function index(Request $request)
     {
-        $query = RsRoom::with('hospital');
+        $query = RsRoom::query();
 
         if ($request->has('usia')) {
             $query->where('usia', $request->input('usia'));
@@ -28,14 +28,17 @@ class RsRoomController extends Controller
             $query->where('kelas_kamar', $request->input('kelas_kamar'));
         }
         if ($request->has('hospital')) {
-            $hospital = Hospital::where('nama_rumah_sakit',$request->input('hospital'))->first();
-            $query->where('hospital_id', $hospital->id);
+            $query->whereHas('hospital', function ($q) use ($request) {
+                $q->where('nama_rumah_sakit', $request->input('hospital'));
+            });
         }
+
         $rooms = $query->get();
 
         // Return the results directly as a JSON response
         return response()->json($rooms);
     }
+
 
     /**
      * Show the form for creating a new resource.

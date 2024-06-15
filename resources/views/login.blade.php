@@ -7,10 +7,12 @@
 
     <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -30,9 +32,10 @@
             </div>
             <div class="frame-group">
                 <div class="frame-container">
-                    <form id="login-form" class="frame-form">
+                    <form id="login-form" class="frame-form" action="{{ route('login.post') }}" method="POST">
+                        @csrf
                         <div class="username-parent">
-                            <input class="username" name="username" placeholder="Username" type="text" required />
+                            <input class="username" name="username" placeholder="Username" type="text" value="{{ old('username') }}" required />
                             <div class="vector-wrapper">
                             </div>
                         </div>
@@ -54,37 +57,16 @@
                 </div>
             </div>
         </section>
-        <img src="{{ asset('image\Hospital.png') }}" alt="Hospital" class="hospital-image">
+        <img src="{{ asset('image/Hospital.png') }}" alt="Hospital" class="hospital-image">
     </div>
-    <script>
-    $(document).ready(function() {
-        $('#login-form').on('submit', function(e) {
-            e.preventDefault();
 
-            var username = $('.username').val();
-            var password = $('.password').val();
-
-            // Mengarahkan pengguna langsung ke halaman homepage
-            window.location.href = '/homepage';
-
-            // Mengirim permintaan login ke server (opsional, jika diperlukan)
-            // $.ajax({
-            //     url: 'http://localhost:8000/login',
-            //     method: 'POST',
-            //     contentType: 'application/json',
-            //     data: JSON.stringify({ username: username, password: password }),
-            //     success: function (response) {
-            //         // Jika login berhasil, pengguna akan diarahkan ke halaman homepage
-            //         window.location.href = '/homepage';
-            //     },
-            //     error: function (xhr, status, error) {
-            //         // Handle error here
-            //         alert('Login failed. Please check your username and password.');
-            //     }
-            // });
-        });
-    });
-    </script>
+    @if ($errors->any())
+        <script>
+            $(document).ready(function() {
+                swal("Login Failed", "{{ $errors->first() }}", "error");
+            });
+        </script>
+    @endif
 </body>
 
 </html>

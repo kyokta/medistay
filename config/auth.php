@@ -36,11 +36,11 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin_hospital' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admin_hospitals',
         ],
-    ],
+    ], 
 
     /*
     |--------------------------------------------------------------------------
@@ -60,9 +60,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admin_hospitals' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\AdminHospital::class,
         ],
 
         // 'users' => [

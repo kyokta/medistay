@@ -91,7 +91,7 @@ body, html {
 
 .username-parent,
 .password-parent {
-  width: 70%;
+  width: 60%;
   height: 6vh;
   border-radius: 8.91px;
   border: 2px solid var(--color-darkslateblue-100);

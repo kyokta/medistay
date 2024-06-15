@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminHospital;
-use App\Http\Requests\StoreAdminHospitalRequest;
-use App\Http\Requests\UpdateAdminHospitalRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\AdminHospital;
 
 class AdminHospitalController extends Controller
 {
@@ -15,23 +14,41 @@ class AdminHospitalController extends Controller
         return response()->json($admins);
     }
 
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
     public function create()
     {
+        // Tampilkan form untuk membuat admin rumah sakit (jika diperlukan)
     }
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'hospital_id' => 'required',
+            'username' => 'required',
+            'alamat_email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        $validatedData['password'] = bcrypt($validatedData['password']);
+    
+        $admin = AdminHospital::create($validatedData);
+    
+        return response()->json($admin, 201);
     }
 
     public function show(AdminHospital $admin)
     {
-        // $admin = AdminHospital::findOrFail($id,'id');
+        // Tampilkan detail admin rumah sakit
         return response()->json($admin);
     }
 
     public function edit(AdminHospital $admin)
     {
-        // Not applicable for JSON response, as it's typically used to display a form
+        // Tampilkan form untuk mengedit admin rumah sakit (jika diperlukan)
     }
 
     public function update(Request $request, AdminHospital $admin)
@@ -42,16 +59,35 @@ class AdminHospitalController extends Controller
             'alamat_email' => 'required|email',
             'password' => 'required',
         ]);
-
+    
+        $validatedData['password'] = bcrypt($validatedData['password']);
+    
         $admin->update($validatedData);
-
-        return response()->json($admin, 200); // 200 OK status code
+    
+        return response()->json($admin, 200);
     }
 
     public function destroy(AdminHospital $admin)
     {
-        // $admin = AdminHospital::findOrFail($id,'id');
+        // Hapus admin rumah sakit
         $admin->delete();
         return response()->json(null, 204); // 204 No Content status code
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::guard('admin_hospital')->attempt($credentials)) {
+            return redirect()->intended('/homepage');
+        }
+
+        return back()->withErrors(['message' => 'Invalid credentials']);
+    }
+    
+
+    public function logout()
+    {
+        Auth::guard('admin_hospital')->logout();
+        return redirect('/login');
     }
 }
