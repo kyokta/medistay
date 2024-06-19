@@ -22,4 +22,7 @@ class RsRoom extends Model
     {
         return $this->belongsTo(Hospital::class, 'hospital_id');
     }
+
+    
 }
+

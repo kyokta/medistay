@@ -1,137 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/homepage.css" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>MediStay</title>
 </head>
 
 <body>
-    <div class="homepage">
+    <div class="homepage" id="homepage">
         <header class="navbar">
-            <a class="medistay1">MediStay</a>
+            <a class="medistay1" href="/">MediStay</a>
             <nav class="navbar-inner">
-                <nav class="about-us-parent">
-                    <a class="about-us">ABOUT US</a>
-                    <b class="category">CATEGORY</b>
-                    <a class="login1">LOGIN</a>
-                </nav>
+                @if(Auth::guard('admin_hospital')->check())
+                <div class="dropdown">
+                    <a class="dropbtn">Halo, {{ Auth::guard('admin_hospital')->user()->username }}!</a>
+                    <div class="dropdown-content">
+                        <a href="#" class="log-out">Logout</a>
+                    </div>
+                </div>
+                @endif
             </nav>
         </header>
         <section class="rectangle-group">
             <div class="frame-item"></div>
-            <div class="group3">
-                <div class="vector-parent">
-                    <img class="vector-icon21" alt="" src="./image/vector-2.svg" />
-
-                    <img class="vector-icon22" alt="" src="./image/vector-3.svg" />
-
-                    <img class="vector-icon23" alt="" src="./image/vector-4.svg" />
-
-                    <img class="vector-icon24" loading="lazy" alt="" src="./image/vector-5.svg" />
-
-                    <img class="vector-icon25" alt="" src="./image/vector-6.svg" />
-
-                    <img class="vector-icon26" alt="" src="./image/vector-7.svg" />
-
-                    <img class="vector-icon27" alt="" src="./image/vector1.svg" />
-
-                    <img class="vector-icon28" alt="" src="./image/vector-9.svg" />
-
-                    <img class="vector-icon29" alt="" src="./image/vector-10.svg" />
-
-                    <img class="vector-icon30" alt="" src="./image/vector-11.svg" />
-
-                    <img class="vector-icon31" alt="" src="./image/vector-12.svg" />
-
-                    <img class="vector-icon32" alt="" src="./image/vector-13.svg" />
-
-                    <img class="vector-icon33" alt="" src="./image/vector-14.svg" />
-
-                    <img class="group-icon13" loading="lazy" alt="" src="./image/group.svg" />
-
-                    <img class="group-icon14" alt="" src="./image/group-1.svg" />
-
-                    <img class="vector-icon34" alt="" src="./image/vector-15.svg" />
-
-                    <img class="vector-icon35" alt="" src="./image/vector-16.svg" />
-
-                    <img class="vector-icon36" alt="" src="./image/vector-17.svg" />
-
-                    <img class="vector-icon37" alt="" src="./image/vector-18.svg" />
-
-                    <img class="vector-icon38" alt="" src="./image/vector-19.svg" />
-
-                    <img class="vector-icon39" alt="" src="./image/vector-20.svg" />
-
-                    <img class="vector-icon40" loading="lazy" alt="" src="./image/vector-21.svg" />
-
-                    <img class="vector-icon41" alt="" src="./image/vector-22.svg" />
-
-                    <img class="vector-icon42" loading="lazy" alt="" src="./image/vector-23.svg" />
-
-                    <img class="group-icon15" alt="" src="./image/group-2.svg" />
-
-                    <img class="vector-icon43" alt="" src="./image/vector-24.svg" />
-
-                    <img class="vector-icon44" alt="" src="./image/vector-25.svg" />
-
-                    <img class="vector-icon45" loading="lazy" alt="" src="./image/vector-26.svg" />
-
-                    <img class="vector-icon46" alt="" src="./image/vector-27.svg" />
-
-                    <img class="vector-icon47" alt="" src="./image/vector-28.svg" />
-
-                    <img class="vector-icon48" loading="lazy" alt="" src="./image/vector-29.svg" />
-
-                    <img class="vector-icon49" alt="" src="./image/vector-30.svg" />
-
-                    <img class="vector-icon50" alt="" src="./image/vector-31.svg" />
-
-                    <img class="vector-icon51" alt="" src="./image/vector-32.svg" />
-
-                    <div class="group4">
-                        <img class="group-icon16" loading="lazy" alt="" src="./image/group-3.svg" />
-
-                        <img class="group-icon17" alt="" src="./image/group-4.svg" />
-
-                        <img class="group-icon18" alt="" src="./image/group-5.svg" />
-                    </div>
-                    <div class="group5">
-                        <img class="group-icon19" loading="lazy" alt="" src="./image/group-3.svg" />
-
-                        <img class="group-icon20" alt="" src="./image/group-4.svg" />
-
-                        <img class="group-icon21" alt="" src="./image/group-5.svg" />
-                    </div>
-                    <img class="vector-icon52" alt="" src="./image/vector-33.svg" />
-
-                    <img class="vector-icon53" loading="lazy" alt="" src="./image/vector-34.svg" />
-
-                    <img class="group-icon22" alt="" src="./image/group-9.svg" />
-
-                    <img class="group-icon23" alt="" src="./image/group-10.svg" />
-
-                    <img class="group-icon24" alt="" src="./image/group-11.svg" />
-
-                    <img class="vector-icon54" alt="" src="./image/vector-35.svg" />
-
-                    <img class="group-icon25" loading="lazy" alt="" src="./image/group-12.svg" />
-                </div>
-            </div>
+            <div class="group3"></div>
             <h1 class="find-your-healing">
                 Find Your Healing Space: Real-Time Hospital Room Availability
             </h1>
             <i class="medistay-provides-up-to-date">MediStay provides up-to-date information on room availability across
                 multiple hospitals. Access real-time data, compare options, and make
                 informed decisions for your health and well-being.</i>
+            <img src="{{ asset('image/Hospital.png') }}" alt="Hospital" class="hospital-image">
         </section>
+
         <section class="homepage-inner">
             <div class="rectangle-container">
                 <div class="frame-inner"></div>
@@ -141,25 +48,28 @@
                 <div class="frame-parent1">
                     <div class="group-div">
                         <div class="rectangle-div"></div>
-                        <div class="pilih-rumah-sakit-wrapper">
-                            <select class="input-rumah-sakit" placeholder="Pilih Rumah Sakit">
-                                <option value="">Pilih Rumah Sakit</option>
-                            </select>
-                        </div>
-
+                        <select id="hospitalDropdown" class="input-rumah-sakit" name="hospital_id" placeholder="Pilih Rumah Sakit">
+                            <option value="">Pilih Rumah Sakit</option>
+                            @foreach(\App\Models\Hospital::all() as $hospital)
+                            <option value="{{ $hospital->id }}">{{ $hospital->nama_rumah_sakit }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button id="cekButton" class="group-button">
                         <div class="frame-child1"></div>
                         <b class="cek">Cek</b>
                     </button>
                 </div>
+            </div>
         </section>
+
         <section class="informasi-ketersediaan-kamar-wrapper">
             <h2 class="informasi-ketersediaan-kamar">
                 INFORMASI KETERSEDIAAN KAMAR
             </h2>
         </section>
-        <section class="homepage-child">
+
+        <section id="resultSection" class="homepage-child">
             <div class="frame-parent2">
                 <div class="frame-wrapper1">
                     <div class="frame-parent3">
@@ -173,30 +83,23 @@
                                     <div class="frame-parent5">
                                         <div class="bed-parent">
                                             <img class="bed-icon" loading="lazy" alt="" src="./image/bed.svg" />
-
-                                            <div class="tempat-tidur-terpakai">
-                                                Tempat Tidur Terpakai
-                                            </div>
+                                            <div class="tempat-tidur-terpakai">Tempat Tidur Terpakai</div>
                                             <div class="wrapper">
-                                                <b class="b">412</b>
+                                                <b class="b"></b>
                                             </div>
                                         </div>
                                         <div class="bed-group">
                                             <img class="bed-icon1" loading="lazy" alt="" src="./image/bed.svg" />
-
-                                            <div class="tempat-tidur-kosong">
-                                                Tempat Tidur Kosong
-                                            </div>
+                                            <div class="tempat-tidur-kosong">Tempat Tidur Kosong</div>
                                             <div class="container">
-                                                <b class="b1">188</b>
+                                                <b class="b1"></b>
                                             </div>
                                         </div>
                                         <div class="bed-container">
                                             <img class="bed-icon2" loading="lazy" alt="" src="./image/bed.svg" />
-
                                             <div class="total-tempat-tidur">Total Tempat Tidur</div>
                                             <div class="frame">
-                                                <b class="b2">600</b>
+                                                <b class="b2"></b>
                                             </div>
                                         </div>
                                     </div>
@@ -214,31 +117,23 @@
                                     <form class="frame-parent8">
                                         <div class="frame-parent9">
                                             <div class="kelas-wrapper">
-                                                <select class="dropdown-select">
-                                                    <option value="kelas-1">Kelas 1</option>
-                                                    <option value="kelas-2">Kelas 2</option>
-                                                    <option value="kelas-3">Kelas 3</option>
-                                                    <option value="vip">VIP</option>
-                                                    <option value="vvip">VVIP</option>
+                                                <select id="kelasDropdown" class="dropdown-select">
+                                                    <option value="">Pilih Kelas</option>
                                                 </select>
                                             </div>
                                             <div class="spesialisasi-wrapper">
-                                                <select class="dropdown-select">
-                                                    <option value="tht">THT</option>
-                                                    <option value="jantung">Jantung</option>
-                                                    <option value="paru-paru">Paru-paru</option>
+                                                <select id="spesialisasiDropdown" class="dropdown-select">
+                                                    <option value="">Pilih Spesialisasi</option>
                                                 </select>
                                             </div>
                                             <div class="usia-wrapper">
-                                                <select class="dropdown-select">
-                                                    <option value="dewasa">Dewasa</option>
-                                                    <option value="anak-anak">Anak-anak</option>
+                                                <select id="usiaDropdown" class="dropdown-select">
+                                                    <option value="">Pilih Usia</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <button class="ggsearch-parent">
+                                        <button type="button" class="ggsearch-parent">
                                             <img class="ggsearch-icon" alt="" src="./image/gg_search.svg" />
-
                                             <div class="cari">Cari</div>
                                         </button>
                                     </form>
@@ -248,73 +143,23 @@
                     </div>
                 </div>
                 <div class="frame-parent10">
-                    <div class="frame-parent11">
-                        <div class="frame-wrapper5">
-                            <div class="kelas-parent">
-                                <b class="kelas1">KELAS</b>
-                                <b class="spesialis">SPESIALIS</b>
-                            </div>
-                        </div>
-                        <div class="frame-parent12">
-                            <div class="frame-wrapper6">
-                                <div class="usia-parent">
-                                    <b class="usia1">USIA</b>
-                                    <b class="jenis-kelamin">JENIS KELAMIN</b>
-                                </div>
-                            </div>
-                            <div class="frame-parent13">
-                                <div class="frame-parent14">
-                                    <div class="frame-wrapper7">
-                                        <div class="rectangle-parent1">
-                                            <div class="frame-child2"></div>
-                                            <b class="kamar-tidur">KAMAR TIDUR</b>
-                                        </div>
-                                    </div>
-                                    <b class="kosong">KOSONG</b>
-                                </div>
-                                <b class="isi">ISI</b>
-                            </div>
-                        </div>
+                    <div class="kelas-parent">
+                        <b class="kelas1">KELAS</b>
+                        <b class="spesialis">SPESIALIS</b>
+                        <b class="usia1">USIA</b>
+                        <b class="jenis-kelamin">TERISI</b>
+                        <b class="jenis-kelamin">KOSONG</b>
                     </div>
-                    <div class="tabel">
-                        <div class="tabel-inner">
-                            <div class="frame-parent15">
-                                <div class="kelas-1-wrapper">
-                                    <div class="kelas-1">Kelas 1</div>
-                                </div>
-                                <div class="ksm-bedah-wrapper">
-                                    <div class="ksm-bedah">KSM Bedah</div>
-                                </div>
-                                <div class="dewasa">Dewasa</div>
-                                <div class="semua-wrapper">
-                                    <div class="semua">Semua</div>
-                                </div>
-                                <div class="wrapper1">
-                                    <div class="div3">58</div>
-                                </div>
-                                <div class="div4">58</div>
-                            </div>
-                        </div>
-                        <div class="table">
-                            <div class="kelas-1-container">
-                                <div class="kelas-11">Kelas 1</div>
-                            </div>
-                            <div class="ksm-bedah-container">
-                                <div class="ksm-bedah1">KSM Bedah</div>
-                            </div>
-                            <div class="dewasa1">Dewasa</div>
-                            <div class="semua-container">
-                                <div class="semua1">Semua</div>
-                            </div>
-                            <div class="wrapper2">
-                                <div class="div5">58</div>
-                            </div>
-                            <div class="div6">58</div>
-                        </div>
+                    <div id="filteredDataContainer">
+                        <!-- Data tabel akan diisi melalui JavaScript -->
                     </div>
                 </div>
+
             </div>
         </section>
+
+
+
         <footer class="footer">
             <div class="footer-bg"></div>
             <div class="zerowaste-parent">
@@ -346,55 +191,253 @@
                 <b class="follow-us">FOLLOW US</b>
                 <div class="youtubelogo-parent">
                     <img class="youtubelogo-icon" loading="lazy" alt="" src="./image/youtubelogo.svg" />
-
                     <img class="instagramlogo-icon" loading="lazy" alt="" src="./image/instagramlogo.svg" />
-
                     <img class="facebooklogo-icon" loading="lazy" alt="" src="./image/facebooklogo.svg" />
-
-                    <div class="twitterlogo-wrapper">
-                        <img class="twitterlogo-icon" loading="lazy" alt="" src="./image/twitterlogo.svg" />
-                    </div>
                 </div>
             </div>
         </footer>
     </div>
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <script>
-    $(document).ready(function() {
-        // Membuat permintaan AJAX untuk mendapatkan data rumah sakit
-        $.ajax({
-            url: 'http://localhost:8000/hospitals', // Ganti dengan URL endpoint yang sesuai
-            method: 'GET',
-            success: function(response) {
-                // Jika permintaan berhasil, tambahkan data rumah sakit ke dropdown
-                var hospitals = response; // Anggap respons berisi array objek rumah sakit
-                var dropdown = $('.input-rumah-sakit');
+        document.addEventListener('DOMContentLoaded', function() {
+            const hospitalDropdown = document.getElementById('hospitalDropdown');
+            const cekButton = document.getElementById('cekButton');
+            const logoutLink = document.querySelector('.log-out');
+            const kelasDropdown = document.getElementById('kelasDropdown');
+            const spesialisasiDropdown = document.getElementById('spesialisasiDropdown');
+            const usiaDropdown = document.getElementById('usiaDropdown');
+            const filteredDataContainer = document.getElementById('filteredDataContainer');
+            const searchButton = document.querySelector('.ggsearch-parent');
+            let fetchedData = {};
 
-                // Kosongkan dropdown sebelum mengisi opsi baru
-                dropdown.empty();
-
-                // Tambahkan opsi "Pilih Rumah Sakit" pertama
-                dropdown.append('<option value="">Pilih Rumah Sakit</option>');
-
-                // Loop melalui data rumah sakit dan tambahkan opsi ke dropdown
-                hospitals.forEach(function(hospital) {
-                    dropdown.append('<option value="' + hospital.id + '">' + hospital
-                        .nama_rumah_sakit + '</option>');
+            // Event listener for logout
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You will be logged out!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, logout!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetch("{{ route('logout') }}", {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({})
+                            }).then(response => {
+                                if (response.ok) {
+                                    Swal.fire(
+                                        'Logged out!',
+                                        'You have been logged out.',
+                                        'success'
+                                    ).then(() => {
+                                        window.location.href = "{{ route('login') }}";
+                                    });
+                                } else {
+                                    Swal.fire(
+                                        'Error!',
+                                        'There was a problem logging you out.',
+                                        'error'
+                                    );
+                                }
+                            }).catch(error => {
+                                Swal.fire(
+                                    'Error!',
+                                    'There was a problem logging you out.',
+                                    'error'
+                                );
+                            });
+                        }
+                    });
                 });
-            },
-            error: function(xhr, status, error) {
-                // Tangani kesalahan jika permintaan gagal
-                console.error('Error:', error);
             }
+
+            // Event listener for Cek button
+            if (cekButton && hospitalDropdown) {
+                cekButton.addEventListener('click', function() {
+                    const hospitalId = hospitalDropdown.value;
+                    if (!hospitalId) {
+                        alert('Pilih Rumah Sakit terlebih dahulu!');
+                        return;
+                    }
+
+                    fetch(`/getHospitalData/${hospitalId}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok ' + response.statusText);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Data received:', data);
+                            fetchedData = data;
+                            displayHospitalData(data);
+                            return data;
+                        })
+                        .then(() => {
+                            // Setelah mendapatkan data rumah sakit, ambil data kamar
+                            fetchRoomsByHospital(hospitalId);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching hospital data:', error);
+                            alert('Maaf, terjadi kesalahan dalam memuat data kamar rumah sakit. Silakan coba lagi.');
+                        });
+
+                    fetch(`/getDropdownData/${hospitalId}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(dropdownData => {
+                            console.log('Dropdown data received:', dropdownData);
+                            populateDropdowns(dropdownData);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching dropdown data:', error);
+                            alert('Maaf, terjadi kesalahan dalam memuat data dropdown. Silakan coba lagi.');
+                        });
+
+                });
+            }
+
+            // Event listener for Search button
+            if (searchButton) {
+                searchButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    const hospitalId = hospitalDropdown.value;
+                    if (!hospitalId) {
+                        alert('Pilih Rumah Sakit terlebih dahulu!');
+                        return;
+                    }
+
+                    fetchRoomsByHospital(hospitalId);
+                });
+            }
+
+            function displayHospitalData(data) {
+                const bedUsed = document.querySelector('.b');
+                const bedEmpty = document.querySelector('.b1');
+                const bedTotal = document.querySelector('.b2');
+
+                if (bedUsed) {
+                    bedUsed.textContent = data.terpakai;
+                }
+                if (bedEmpty) {
+                    bedEmpty.textContent = data.kosong;
+                }
+                if (bedTotal) {
+                    bedTotal.textContent = data.total;
+                }
+            }
+
+            function populateDropdowns(dropdownData) {
+                populateDropdown(kelasDropdown, dropdownData.kelas);
+                populateDropdown(spesialisasiDropdown, dropdownData.spesialisasi);
+                populateDropdown(usiaDropdown, dropdownData.usia);
+            }
+
+            function populateDropdown(dropdown, data) {
+                dropdown.innerHTML = data.map(item => `<option value="${item}">${item}</option>`).join('');
+            }
+
+            function fetchRoomsByHospital(hospitalId) {
+                fetch(`/getRoomsByHospital/${hospitalId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        displayRoomsTable(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching rooms data:', error);
+                        alert('Maaf, terjadi kesalahan dalam memuat data kamar. Silakan coba lagi.');
+                    });
+            }
+
+            function displayRoomsTable(data) {
+                const filteredDataContainer = document.getElementById('filteredDataContainer');
+                filteredDataContainer.innerHTML = ''; // Clear previous content
+
+                data.forEach(room => {
+                    const row = document.createElement('div');
+                    row.classList.add('tabel'); // Adjust to your CSS class
+
+                    // Inner structure
+                    const innerWrapper = document.createElement('div');
+                    innerWrapper.classList.add('tabel-inner'); // Adjust to your CSS class
+                    row.appendChild(innerWrapper);
+
+                    // Frame parent
+                    const frameParent = document.createElement('div');
+                    frameParent.classList.add('frame-parent15'); // Adjust to your CSS class
+                    innerWrapper.appendChild(frameParent);
+
+                    // Kolom 1: Kelas
+                    const kelasWrapper = document.createElement('div');
+                    kelasWrapper.classList.add('kelas-1-wrapper'); // Adjust to your CSS class
+                    frameParent.appendChild(kelasWrapper);
+
+                    const kelasContainer = document.createElement('div');
+                    kelasContainer.classList.add('kelas-1'); // Adjust to your CSS class
+                    kelasContainer.textContent = room.kelas_kamar;
+                    kelasWrapper.appendChild(kelasContainer);
+
+                    // Kolom 2: Spesialisasi
+                    const spesialisasiWrapper = document.createElement('div');
+                    spesialisasiWrapper.classList.add('ksm-bedah-wrapper'); // Adjust to your CSS class
+                    frameParent.appendChild(spesialisasiWrapper);
+
+                    const spesialisasiContainer = document.createElement('div');
+                    spesialisasiContainer.classList.add('ksm-bedah'); // Adjust to your CSS class
+                    spesialisasiContainer.textContent = room.spesialisasi;
+                    spesialisasiWrapper.appendChild(spesialisasiContainer);
+
+                    // Kolom 3: Usia
+                    const usiaContainer = document.createElement('div');
+                    usiaContainer.classList.add('dewasa'); // Adjust to your CSS class
+                    usiaContainer.textContent = room.usia;
+                    frameParent.appendChild(usiaContainer);
+
+                    // Kolom 4: Jumlah Kamar Terisi
+                    const terisiWrapper = document.createElement('div');
+                    terisiWrapper.classList.add('wrapper1'); // Adjust to your CSS class
+                    frameParent.appendChild(terisiWrapper);
+
+                    const terisiContainer = document.createElement('div');
+                    terisiContainer.classList.add('div3'); // Adjust to your CSS class
+                    terisiContainer.textContent = room.jumlah_kamar_terisi;
+                    terisiWrapper.appendChild(terisiContainer);
+
+                    // Kolom 5: Jumlah Kamar Kosong
+                    const kosongContainer = document.createElement('div');
+                    kosongContainer.classList.add('div4'); // Adjust to your CSS class
+                    kosongContainer.textContent = room.jumlah_kamar_kosong;
+                    frameParent.appendChild(kosongContainer);
+
+                    // Append row to filtered data container
+                    filteredDataContainer.appendChild(row);
+                });
+            }
+
+
+
         });
-    });
     </script>
-</body>
-
-</html>
-
 </body>
 
 </html>

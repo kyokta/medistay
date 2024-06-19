@@ -88,6 +88,6 @@ class AdminHospitalController extends Controller
     public function logout()
     {
         Auth::guard('admin_hospital')->logout();
-        return redirect('/login');
+        return redirect('/login/admin-medistay');
     }
 }

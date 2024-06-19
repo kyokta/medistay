@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Hospital extends Model
+
 {
     use HasFactory;
 
+    protected $table = 'hospitals';
     protected $fillable = [
         'nama_rumah_sakit',
         'alamat_rumah_sakit',
@@ -25,4 +27,6 @@ class Hospital extends Model
     {
         return $this->hasMany(AdminHospital::class,'hospital_id','id')   ;
     }
+
+    
 }

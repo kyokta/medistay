@@ -11,9 +11,6 @@ use Illuminate\Http\Request;
 
 class RsRoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $query = RsRoom::query();
@@ -35,60 +32,67 @@ class RsRoomController extends Controller
 
         $rooms = $query->get();
 
-        // Return the results directly as a JSON response
         return response()->json($rooms);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
-
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreRsRoomRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
-        //
-
         $rsRooms = RsRoom::where('hospital_id', $id)->get();
 
-        // Transform the RsRoom model(s) into a JSON response using RsRoomResource
-        return RsRoomResource::collection($rsRooms);
+        $total = $rsRooms->sum('jumlah_kamar_terisi') + $rsRooms->sum('jumlah_kamar_kosong');
+        $terpakai = $rsRooms->sum('jumlah_kamar_terisi');
+        $kosong = $rsRooms->sum('jumlah_kamar_kosong');
+
+        return response()->json([
+            'terpakai' => $terpakai,
+            'kosong' => $kosong,
+            'total' => $total
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function getDropdownData($hospitalId)
+    {
+        // Ambil data untuk dropdown kelas, spesialisasi, dan usia dari database
+        $kelas = RsRoom::where('hospital_id', $hospitalId)->distinct()->pluck('kelas_kamar')->toArray();
+        $spesialisasi = RsRoom::where('hospital_id', $hospitalId)->distinct()->pluck('spesialisasi')->toArray();
+        $usia = RsRoom::where('hospital_id', $hospitalId)->distinct()->pluck('usia')->toArray();
+
+        return response()->json([
+            'kelas' => $kelas,
+            'spesialisasi' => $spesialisasi,
+            'usia' => $usia,
+        ]);
+    }
+
+    public function getRoomsByHospital($hospitalId)
+    {
+        $rooms = RsRoom::where('hospital_id', $hospitalId)
+                     ->get(['kelas_kamar', 'spesialisasi', 'usia', 'jumlah_kamar_terisi', 'jumlah_kamar_kosong']);
+        
+        return response()->json($rooms);
+    }
+
+
     public function edit(RsRoom $rsRoom)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateRsRoomRequest $request, RsRoom $rsRoom)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(RsRoom $rsRoom)
     {
         //

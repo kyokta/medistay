@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminHospitalController;
+use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\RsRoomController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::redirect('/', '/homepage');
 
 // Tampilkan form login
-Route::get('/login', [AdminHospitalController::class, 'showLoginForm'])->name('login');
+Route::get('/login/admin-medistay', [AdminHospitalController::class, 'showLoginForm'])->name('login');
 
 // Operasi CRUD untuk admin rumah sakit
 Route::get('/admins', [AdminHospitalController::class, 'index']);
@@ -23,6 +23,14 @@ Route::post('/logout', [AdminHospitalController::class, 'logout'])->name('logout
 
 Route::get('/homepage', function () {
     return view('homepage');
-})->middleware('auth:admin_hospital');
+});
+
+Route::get('/hospitals', [HospitalController::class, 'index']);
+
+Route::get('/getHospitalData/{id}', [RsRoomController::class, 'show']);
+
+Route::get('/getDropdownData/{hospitalId}', [RsRoomController::class, 'getDropdownData']);
+
+Route::get('/getRoomsByHospital/{hospitalId}', [RsRoomController::class, 'getRoomsByHospital']);
 
 

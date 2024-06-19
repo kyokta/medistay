@@ -39,6 +39,15 @@ class AuthController extends Controller
 
     }
 
+    public function logout(Request $request)
+    {
+        Auth::guard('admin_hospital')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        return response()->json(['message' => 'Logged out successfully'], 200);
+    }
+
     public function registrasi(Request $request)
     {
         $validated = $request->validate([
